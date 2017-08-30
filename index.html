@@ -13,7 +13,15 @@
 
 	<title>模拟桌面</title>
 </head>
+<style>
+	body{
+		background-color: #fbaa69;
+	}
+</style>
 <body>
+<!--<div height="100%" style="background: url('img/bg7.jpg') no-repeat center;">-->
+
+
 <div id='jqxMenu' style='visibility: visible; margin-left: 5px;width: auto; height: 30px;border:none'>
 	<ul>
 		<li><img style="width:20px;height:20px" src="img/windows10.png" alt=""/>
@@ -43,7 +51,7 @@
 		<span id="clock" style="width:auto;float:right;margin-top: 5px;margin-right: 20px">时间:</span>
 	</ul>
 </div>
-<img id="bg" class="img-responsive" src="img/bg7.jpg"/>
+<!--<img id="bg" class="img-responsive" src="img/bg7.jpg"/>-->
 
 <ul id="decktopiconbox">
 	<li title="我的电脑">
@@ -73,7 +81,7 @@
 </ul>
 
 
-
+</div>
 <script type="text/javascript">
 	$(function(){
 		$("#decktopiconbox").sortable();//拖动排序----------------集成在jQuery ui中
@@ -227,7 +235,7 @@
 
 
 	SignOut=function(){
-		window.location.href='file:///C:/Users/Kim/Desktop/%E6%A1%8C%E9%9D%A2/%E6%A8%A1%E6%8B%9F%E6%A1%8C%E9%9D%A2login.html';
+		window.location.href='login.html';
 	}
 
 	$.fn.clock = function(){//===========时钟

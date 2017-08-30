@@ -30,12 +30,10 @@
 							</td>
 						</tr>
 						<tr>
-							<td>
-								<img style="width:26px;margin-top: -20px;" src="css/images/password.png" alt=""/>
-							</td>
-							<td><input id="psd" type="password"  style="background-color: transparent; border: 1px solid #efefef;border-radius: 5px;
-							margin-bottom: 20px;width:280px;line-height: 30px;" placeholder="密码"/>
-						</td>
+							<td><img style="width:26px;margin-top: -20px;" src="css/images/password.png" alt=""/></td>
+							<!--只能输入数字和字母,屏蔽右键，屏蔽复制、粘贴-->
+							<td><input id="psd" type="password" onKeyDown="fncKeyStop(event)" onpaste="return false" oncontextmenu="return false;"   style="background-color: transparent; border: 1px solid #efefef;border-radius: 5px;
+							margin-bottom: 20px;width:280px;line-height: 30px;" placeholder="密码" onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')"/></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -62,17 +60,24 @@
 
 	<script>
 		function confirm(){
-			var tel=$('#account').val();//获取页面中登录名和密码
+			var name=$('#account').val();//获取页面中登录名和密码
 			var pwd=$('#psd').val();
 
-			if(tel==""|| pwd==""){//判断两个均不为空（其他判断规则在其输入时已经判断）
+			if(name==""|| pwd==""){//判断两个均不为空（其他判断规则在其输入时已经判断）
 				alert("账号密码均不能为空！");
-//				$('#login').val('登录');
 				return false;
 			}else{//以上均符合要求，则调用登录esb接口
 //				alert("登录成功！")
+					var forbidChar = new Array(",","-","/","//","'","%","/","<",">",".");
+					for (var i = 0;i < forbidChar.length ; i++){
+						if(name.indexOf(forbidChar[i]) >= 0){
+							alert("您输入的信息: "+name+" 中含有非法字符: "+forbidChar[i]+" 请更正！");
+							return false;
+						}
+					}
+
 				$('#login').val('登录中...');
-				window.location.href='file://C:/Users/Kim/Desktop/%E6%A1%8C%E9%9D%A2/%E6%A8%A1%E6%8B%9F%E6%A1%8C%E9%9D%A22.0.html';//正确登录后页面跳转至
+				window.location.href='index.html';//正确登录后页面跳转至
 //				$.ajax({
 //					url:,//相对应的esb接口地址
 //					type:'post',
